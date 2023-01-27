@@ -25,13 +25,19 @@ class Mongo{
         findResult = await this.db.collection(collection).find(query).toArray()
         return findResult
     }
-    getOne(collection, query){
+    async getOne(collection, query){
 
     }
-    insert(collection, document){
-
+    async insert(collection, document){
+        console.log('Recibio una peticion insert a '+collection)
+        let insertResult
+        if (!this.db){
+            await this.connect()
+        }
+        insertResult = await this.db.collection(collection).insertOne(document)
+        return insertResult
     }
-    update(collection, oldDocument, newDocument){
+    async update(collection, oldDocument, newDocument){
 
     }
 }

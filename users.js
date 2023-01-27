@@ -13,7 +13,8 @@ class Usuarios{
 
     }
     async insertUsuario(usuario){
-
+        const insertResult = this.mongoDB.insert(this.collection, usuario)
+        return insertResult
     }
     async updateUsuario(usuarioOld, usuarioNew){
 

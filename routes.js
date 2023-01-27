@@ -16,7 +16,7 @@ function escucha(app){
                 'usuarios':users            
             })
         }catch(error){
-            console(error)
+            console.log(error)
         }
     })
     router.post('/data', async function(req, res, next){
@@ -25,12 +25,13 @@ function escucha(app){
         console.log('body: ',req.body)
         console.log('query',req.query)
         try{
-            const users = await misUsuarios.getUsuarios({})
+            const user = await misUsuarios.insertUsuario(req.body)
             res.status(200).json({
-                'Peticion post ':'Satisfactoria'            
+                'Peticion post ':'Satisfactoria',
+                'insertado':user
             })
         }catch(error){
-            console(error)
+            console.log(error)
         }
     })
 }
